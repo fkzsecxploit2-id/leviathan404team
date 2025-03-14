@@ -1,22 +1,22 @@
 {
-    "version": 2,
-    "builds": [
-      {
-        "src": "backend/server.js",
-        "use": "@vercel/node"
-      },
-      {
-        "src": "index.html",
-        "use": "@vercel/static"
-      }
-    ],
-    "routes": [
-      { "src": "/api/(.*)", "dest": "backend/server.js" },
-      { "src": "/(.*)", "dest": "/$1" }
-    ],
-    "headers": [
+  "version": 2,
+  "builds": [
     {
-      "source": "/(.*).(css|js|png|jpg|jpeg|gif|svg|woff|woff2|ttf|otf|mp4|webm|ogg|mp3|wav|json)",
+      "src": "backend/server.js",
+      "use": "@vercel/node"
+    },
+    {
+      "src": "index.html",
+      "use": "@vercel/static"
+    }
+  ],
+  "routes": [
+    { "src": "/api/(.*)", "dest": "backend/server.js" },
+    { "src": "/(.*)", "dest": "/$1" }
+  ],
+  "headers": [
+    {
+      "source": "/(.*)\\.(css|js|png|jpg|jpeg|gif|svg|woff|woff2|ttf|otf|mp4|webm|ogg|mp3|wav|json)$",
       "headers": [
         { "key": "Cache-Control", "value": "public, max-age=31536000, immutable" }
       ]

@@ -481,13 +481,16 @@ window.onload = function () {
 
     async function sendMessageToAI(message) {
         const normalizedMessage = normalizeInput(message);
+        
         if (predefinedResponses[normalizedMessage]) {
             return predefinedResponses[normalizedMessage];
         }
+        
         let bestMatch = findClosestMatch(normalizedMessage);
         if (bestMatch) {
             return predefinedResponses[bestMatch];
         }
+    
         try {
             const response = await fetch("https://api-backend-three-kappa.vercel.app/api/ai", {
                 method: "POST",
@@ -510,6 +513,7 @@ window.onload = function () {
         }
     }
     
+        
 
     input_user.addEventListener('keydown', async (e) => {
         if (e.key === "Enter" && input_user.value.trim()) {
